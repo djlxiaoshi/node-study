@@ -1,0 +1,25 @@
+{
+  "name": "node-study",
+  "version": "1.0.0",
+  "description": "this is node-study projects",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djlxiaoshi/node-study.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djlxiaoshi/node-study/issues"
+  },
+  "homepage": "https://github.com/djlxiaoshi/node-study#readme",
+  "dependencies": {
+    "co": "^4.6.0"
+  }
+}
