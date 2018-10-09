@@ -12,5 +12,15 @@ const asyncFun = function (value) {
 
 
 asyncFun(1).then(function (value) {
-  consleo.log(1)
+  setTimeout(function () {
+      console.log(2);
+  }, 0);
+  consoel.log(value)
 });
+
+
+// setTimeout(function () {
+//     console.log(2);
+// }, 0);
+//
+// consoel.log(1)

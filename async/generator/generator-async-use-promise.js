@@ -4,8 +4,8 @@ const readFile = utils.promisify(fs.readFile);
 
 function * gen() {
     try {
-        const config = yield fs.readFile;
-        console.log(config.toString());
+        const file = yield readFile('./config.json');
+        console.log(file.toString());
     } catch(e) {
         console.log(e);
     }
@@ -13,9 +13,8 @@ function * gen() {
 
 const g = gen();
 
-g.next().value('./config.json', function (error, file) {
-  if (error) {
+g.next().value.then(function(file) {
+    g.next(file);
+}, function (error) {
     g.throw('文件不存在');
-  }
-  g.next(file);
 });

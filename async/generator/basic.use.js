@@ -1,6 +1,6 @@
 function * gen (x) {
     const y = yield x + 2;
-    console.log(y, 'lalal')
+    // console.log(y, 'here')
 }
 
 const g = gen(1);
