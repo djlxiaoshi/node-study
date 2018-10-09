@@ -15,3 +15,4 @@ promise1.then((value) => {
 }).then(function () {
     console.log('DJL箫氏');
 });
+

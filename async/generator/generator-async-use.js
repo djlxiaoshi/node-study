@@ -1,13 +1,11 @@
 const fs = require('fs');
-const utils = require('util');
-const readFile = utils.promisify(fs.readFile);
 
 function * gen() {
     try {
         const config = yield fs.readFile;
         console.log(config.toString());
     } catch(e) {
-        console.log(e);
+        console.log('捕获到异常', e);
     }
 }
 

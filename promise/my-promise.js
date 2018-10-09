@@ -12,11 +12,7 @@ function _Promise(executor) {
             _this.status === 'resolved';
             _this.data = value;
             // 执行所有then方法中注册的回调函数
-<<<<<<< Updated upstream
-            for (let i = 0; i < _this.onResolvedCallback.length; i++;) {
-=======
             for (let i = 0; i < _this.onResolvedCallback.length; i++) {
->>>>>>> Stashed changes
                 _this.onResolvedCallback[i](value);
             }
         }
@@ -44,17 +40,17 @@ function _Promise(executor) {
     }
 }
 
-_Promise.prototype.resolve = function(value) {
+_Promise.prototype.resolve = function (value) {
     // 调用then中的回调函数
     const cb = this.queue.shift();
     cb(value);
 };
 
-_Promise.prototype.then = function(onResolved, onRejected) {
+_Promise.prototype.then = function (onResolved, onRejected) {
     const _this = this;
     let promise2;
-    onResolved = typeof onResolved === 'function' ? onResolved : function(r) {};
-    onRejected = typeof onRejected === 'function' ? onRejected : function(v) {};
+    onResolved = typeof onResolved === 'function' ? onResolved : function (r) { };
+    onRejected = typeof onRejected === 'function' ? onRejected : function (v) { };
 
 
     // then 方法总是会返回一个Promise  即具备then方法
@@ -64,7 +60,7 @@ _Promise.prototype.then = function(onResolved, onRejected) {
     // 如果上一个promise直接返回一个不为Promise类型的值，那么这个值直接传递到下一个Promise的resolve函数中
     // 如果返回的是一个Promise,那么这个返回的promise的then方法中的resolve和reject方法就是
     if (_this.status === 'resolved') {
-        return promise2 = new _Promise(function(resolve, reject) {
+        return promise2 = new _Promise(function (resolve, reject) {
             try {
                 // 由于状态已经是resolved，所以这时调用then方法，并不会将回调函数加入到对应的队列中，而是直接执行掉
                 var x = onResolved(this.data);
@@ -84,10 +80,10 @@ _Promise.prototype.then = function(onResolved, onRejected) {
 
     }
     if (_this.status === 'pendding') {
-        return promise2 = new _Promise(function(resolve, reject) {
+        return promise2 = new _Promise(function (resolve, reject) {
             console.log(_this);
             // 添加到队列中
-            _this.onResolvedCallback.push(function(value) {
+            _this.onResolvedCallback.push(function (value) {
                 try {
                     var x = onResolved(_this.data);
                     if (x instanceof _Promise) {
@@ -99,7 +95,7 @@ _Promise.prototype.then = function(onResolved, onRejected) {
 
             });
 
-            _this.onRejectedCallback.push(function(value) {
+            _this.onRejectedCallback.push(function (value) {
                 try {
                     var x = onRejected(_this.data);
                     if (x instanceof _Promise) {
@@ -114,7 +110,7 @@ _Promise.prototype.then = function(onResolved, onRejected) {
     }
 };
 
-const promise = new _Promise(function(resolve, reject) {
+const promise = new _Promise(function (resolve, reject) {
     setTimeout(() => {
         resolve(1);
     }, 1000);
